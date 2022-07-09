@@ -1,6 +1,7 @@
 
 
 function convertToRoman(num) {
+  // a lookup table
   const map ={
     M 	:1000,
     CM 	:900,
@@ -16,15 +17,16 @@ function convertToRoman(num) {
     IV 	:4,
     I 	:1
   }
+  // string that we will build up as the return value
   let Rnum = "";
 
+  // for each roman numeral in the lookup table, check if applies
   for(let prop in map){
     // start with the biggest roman numeral and see how many times we can subtract it from our number
-    const component = map[prop];
-    const n = Math.floor(num/component)
-    num = num % component;
+    const value = map[prop];
+    const n = Math.floor(num/value)
+    num = num % value;
     Rnum += prop.repeat(n)
-
   }
   return Rnum;
 }
