@@ -9,19 +9,22 @@ function checkCashRegister(price, cash, cid) {
       "Nickel":	0.05,
       "Dime":	0.1,
       "Quarter":	0.25,
-      "Dollar":	1,
-      "Five Dollars":	5,
-      "Ten Dollars":	10,
-      "Twenty Dollars":	20
+      "One":	1,
+      "Five":	5,
+      "Ten":	10,
+      "Twenty":	20,
+      "One-hundred": 100
     }
   
     const cid_total = MATH.sum(cid.values)
-    const total_change = cash - price
+    let change_needed = cash - price;
   
     function get_change(){
-      const arr = Object.values(cid).reverse()
+      const arr = Object.keys(value_map).reverse()
       arr.forEach((a,b,c) => {
-        let factor = price/
+        let denomination = value_map[a];
+        let factor = Math.floor(price/value_map[a]);
+        change_needed -= factor
       })
       total_change
     }
